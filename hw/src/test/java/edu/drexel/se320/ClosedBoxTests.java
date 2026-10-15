@@ -9,7 +9,12 @@ import static org.hamcrest.Matchers.lessThan;
 // Core JUnit 5
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import org.junit.jupiter.api.Test;
+
+import jdk.jfr.Timestamp;
+
+import java.util.NoSuchElementException;
 
 public class ClosedBoxTests extends BinarySearchBase {
 
@@ -20,47 +25,163 @@ public class ClosedBoxTests extends BinarySearchBase {
      * but generic types must use Integer (or Char, Double, etc. rather than other primitives).
      * For regular object types (e.g., String) there's nothing special to do, just use the class.
     */
-    public void exampleCallToDelete() {
-        // Java generics do not treat primitives the same as object types.
-        // To pass a primitive type (int, double, etc.) to the find method, you need to actually use the corresponding "boxed" version (Integer, Double, etc.) which is a class-based version of each primitive.
-        // For types which are already/always objects, like String, everything will just work.
-        // This method is not part of a test, but just a refresher/crash-course for those who may not have tried passing primitives to generic Java methods previously.
-        // You should not modify this method; no part of the assignment requires you to do so, and this
-        // can simply be deleted.
 
-        Integer[] arr = { 0, 1, 2 };
-        find(arr, 1);
+    // Partition: Invalid inputs
 
-        String[] arr2 = { "a", "b", "c", "foo" };
-        find(arr2, "c");
-
-    }
-
+    // 1. Null array
     @Test
-    public void test1() {
-        // Delete this test once you're sure you can run the code.
-        assertEquals(0, 0);
+    public void nullArray() {
+        Integer[] arr = null;
+        Exception exception = assertThrows(IllegalArgumentException.class,
+            () -> { find(arr, 1); }
+        );
+        assertEquals("Array is null", exception.getMessage());
     }
 
+    // 2. Empty array
     @Test
-    public void testExceptions() {
-        // Also delete this test after you understand how to check for exceptions.
-        Exception exception = assertThrows(UnsupportedOperationException.class,
-        /* The bit between this and the next comment is a 
-        * *lambda expression*: https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html#syntax
-        * If you've taken PL, this is Java's lambda.
-        * If not, this is like special syntax for a function object with one method.
-        * Notice the form is:
-        *   _args_ -> { body }
-        * The body here simply throws an exception so you can see how the exception assertions work, but in general this is where you'd write code you expect to throw an exception when run.
-        */
-            () -> { throw new UnsupportedOperationException("Bad jasdf;lkasdjlfk"); }
-        /* end of lambda expression. The () at the beginning is the (empty)
-        * argument list of the lambda */
-        ); // <-- This is closing off the call to assertThrows
-        // Here you can use any methods on the Exception type to inspect whether the right exception was thrown.
-        assertEquals("Bad Operation", exception.getMessage());   
+    public void emptyArray() {
+        Integer[] arr = {};
+        Exception exception = assertThrows(IllegalArgumentException.class,
+            () -> { find(arr, 1); }
+        );
+        assertEquals("Array is empty", exception.getMessage());
     }
 
+    // 3. Null element
+    @Test
+    public void nullElement() {
+        Integer[] arr = { 1 };
+        Exception exception = assertThrows(IllegalArgumentException.class,
+            () -> { find(arr, null); }
+        );
+        assertEquals("Element is null", exception.getMessage());
+    }
+
+    // Partition: Edge cases and boundaries depending on array size
+
+    // 1. Search for an element in array size one
+    @Test
+    public void searchElementArraySizeOne() {
+        Integer[] arr = { 1 };
+        assertEquals(find(arr, 1), 0);
+    }
+
+    // 2. Search for an element in an odd size array
+    @Test
+    public void searchElementArrayOdd() {
+        Integer[] arr = { 1, 2, 3, 4, 5 };
+        assertEquals(find(arr, 3), 2);
+    }
+
+    // 3. Search for an element in an even size array (upper mid index)
+    @Test
+    public void searchElementArrayEven() {
+        Integer[] arr = { 1, 2, 3, 4 };
+        assertEquals(find(arr, 3), 2);
+    }
+
+    // 4. Search for an element in an even size array (lower mid index)
+    @Test
+    public void searchElementArrayEvenLowerMid() {
+        Integer[] arr = { 1, 2, 3, 4 };
+        assertEquals(find(arr, 2), 1);
+    }
+
+    // Partition: Edge cases and boundaries depending on array position
+
+    // 1. Search for the first element in an array
+    @Test
+    public void searchFirstElementInArray() {
+        Integer[] arr = { 1, 2, 3, 4, 5};
+        assertEquals(find(arr, 1), 0);
+    }
+
+    // 2. Search for the last element in an array
+    @Test
+    public void searchLastElement() {
+        Integer[] arr = { 1, 2, 3, 4, 5 };
+        assertEquals(find(arr, 5), 4);
+    }
+
+    // 3. Search for an element in the middle of the array
+    @Test
+    public void searchMiddleElement() {
+        Integer[] arr = { 1, 2, 3, 4, 5 };
+        assertEquals(find(arr, 3), 2);
+    }
+
+    // Partition: Edge cases and boundaries for elements not in the array
+
+    // 1. Search for an element not in the array but within the range of the array
+    @Test
+    public void searchElementNotInArrayButBetweenRange() {
+        Integer[] arr = {1, 2, 4, 5};
+        Exception exception = assertThrows(NoSuchElementException.class,
+            () -> { find(arr, 3); }
+        );
+        assertEquals("No such element exists in the array", exception.getMessage());
+
+    }
+        
+    // 2. Search for an element not in the array and smaller than min
+    @Test
+    public void searchElementNotInArrayAndSmallerThanMin() {
+        Integer[] arr = {1, 2, 3, 4, 5};
+        Exception exception = assertThrows(NoSuchElementException.class,
+            () -> { find(arr, 0); }
+        );
+        assertEquals("No such element exists in the array", exception.getMessage());
+    }
+
+    // 3. Search for an element not in the array and greater than max
+    @Test
+    public void searchElementNotInArrayAndGreaterThanMax() {
+        Integer[] arr = {1, 2, 3, 4, 5};
+        Exception exception = assertThrows(NoSuchElementException.class,
+            () -> { find(arr, 6); }
+        );
+        assertEquals("No such element exists in the array", exception.getMessage());
+    }
+
+    // Partition: Edge cases and boundaries depending on duplicate elements in the array
+
+    // 1. Search for an element in an array with multiple of that element
+    @Test
+    public void searchElementInArrayWithElementDuplicates() {
+        Integer[] arr = {1, 2, 3, 3, 4, 5};
+        boolean result = find(arr, 3) == 2 || find(arr, 3) == 3;
+        assertEquals(result, true);
+    }
+
+    // 2. Search for an element in an array with multiple of other elements
+    @Test
+    public void searchElementInArrayWithOtherDuplicates() {
+        Integer[] arr = {1, 2, 3, 4, 4, 5, 6, 6};
+        assertEquals(find(arr, 2), 1);
+    }
+
+    // Partition: Ensure that the array is not modified by the search
+
+    // 1. Searches for an element in an array without changing the array 
+    @Test
+    public void searchElementWithoutChangingArray() {
+        Integer[] arr = {1, 2, 3, 4, 5};
+        Integer[] arrCopy = arr.clone();
+        find(arr, 3);
+        assertArrayEquals(arr, arrCopy);
+    }
+    
+    // 2. Searches for an element not in an array without changing the array 
+    @Test
+    public void searchElementNotInWithoutChangingArray() {
+        Integer[] arr = {1, 2, 3, 4, 5};
+        Integer[] arrCopy = arr.clone();
+        Exception exception = assertThrows(NoSuchElementException.class,
+            () -> { find(arr, 6); }
+        );
+        assertEquals("No such element exists in the array", exception.getMessage());        
+        assertArrayEquals(arr, arrCopy);
+    }
 }
 
