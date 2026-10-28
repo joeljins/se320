@@ -31,7 +31,7 @@ public class OpenBoxTests extends BinarySearchBase {
         Exception exception = assertThrows(IllegalArgumentException.class,
             () -> { find(arr, 1); }
         );
-        assertEquals("Array is empty", exception.getMessage());
+        assertEquals("Array is null", exception.getMessage());
     }
 
     // Triggers null element exception

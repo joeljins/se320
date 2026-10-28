@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.drexel.se320.PropertyTests" tests="10" skipped="0" failures="5" errors="0" timestamp="2026-10-28T19:49:58.040Z" hostname="JOELAPTOP" time="1.598">
+  <properties/>
+  <testcase name="checkMiddleElt" classname="edu.drexel.se320.PropertyTests" time="0.691">
+    <failure message="org.opentest4j.AssertionFailedError: Property [PropertyTests:checkMiddleElt] failed with sample {0=Integer[] [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Property [PropertyTests:checkMiddleElt] failed with sample {0=Integer[] [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}
+	at net.jqwik.engine.properties.PropertyCheckResult.determineThrowable(PropertyCheckResult.java:193)
+	at net.jqwik.engine.properties.PropertyCheckResult.&lt;init&gt;(PropertyCheckResult.java:185)
+	at net.jqwik.engine.properties.PropertyCheckResult.failed(PropertyCheckResult.java:68)
+	at net.jqwik.engine.properties.GenericProperty.shrinkAndCreateCheckResult(GenericProperty.java:187)
+	at net.jqwik.engine.properties.GenericProperty.check(GenericProperty.java:80)
+	at net.jqwik.engine.execution.CheckedProperty.check(CheckedProperty.java:67)
+	at net.jqwik.engine.execution.PropertyMethodExecutor.executeProperty(PropertyMethodExecutor.java:90)
+	at net.jqwik.engine.execution.PropertyMethodExecutor.executeMethod(PropertyMethodExecutor.java:69)
+	at net.jqwik.engine.execution.PropertyMethodExecutor.lambda$execute$0(PropertyMethodExecutor.java:49)
+	at net.jqwik.api.lifecycle.AroundPropertyHook.lambda$static$0(AroundPropertyHook.java:46)
+	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$0(HookSupport.java:26)
+	at net.jqwik.api.lifecycle.PropertyExecutor.executeAndFinally(PropertyExecutor.java:39)
+	at net.jqwik.engine.hooks.lifecycle.PropertyLifecycleMethodsHook.aroundProperty(PropertyLifecycleMethodsHook.java:56)
+	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$1(HookSupport.java:31)
+	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$0(HookSupport.java:26)
+	at net.jqwik.engine.hooks.statistics.StatisticsHook.aroundProperty(StatisticsHook.java:37)
+	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$1(HookSupport.java:31)
+	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$0(HookSupport.java:26)
+	at net.jqwik.engine.hooks.lifecycle.AutoCloseableHook.aroundProperty(AutoCloseableHook.java:13)
+	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$1(HookSupport.java:31)
+	at net.jqwik.engine.execution.PropertyMethodExecutor.execute(PropertyMethodExecutor.java:47)
+	at net.jqwik.engine.execution.PropertyTaskCreator.executeTestMethod(PropertyTaskCreator.java:166)
+	at net.jqwik.engine.execution.PropertyTaskCreator.lambda$createTask$1(PropertyTaskCreator.java:51)
+	at net.jqwik.engine.execution.lifecycle.CurrentDomainContext.runWithContext(CurrentDomainContext.java:30)
+	at net.jqwik.engine.execution.PropertyTaskCreator.lambda$createTask$2(PropertyTaskCreator.java:50)
+	at net.jqwik.engine.execution.pipeline.ExecutionTask$1.lambda$execute$0(ExecutionTask.java:31)
+	at net.jqwik.engine.execution.lifecycle.CurrentTestDescriptor.runWithDescriptor(CurrentTestDescriptor.java:18)
+	at net.jqwik.engine.execution.pipeline.ExecutionTask$1.execute(ExecutionTask.java:31)
+	at net.jqwik.engine.execution.pipeline.ExecutionPipeline.runToTermination(ExecutionPipeline.java:82)
+	at net.jqwik.engine.execution.JqwikExecutor.execute(JqwikExecutor.java:51)
+	at net.jqwik.engine.JqwikTestEngine.executeTests(JqwikTestEngine.java:71)
+	at net.jqwik.engine.JqwikTestEngine.execute(JqwikTestEngine.java:53)
+</failure>
+  </testcase>
+  <testcase name="checkSingleArrayElt" classname="edu.drexel.se320.PropertyTests" time="0.108"/>
+  <testcase name="checkNullArray" classname="edu.drexel.se320.PropertyTests" time="0.045"/>
+  <testcase name="checkEvenSizedArrayRightElt" classname="edu.drexel.se320.PropertyTests" time="0.254">
+    <failure message="java.util.NoSuchElementException: No such element exists in the array" type="java.util.NoSuchElementException">java.util.NoSuchElementException: No such element exists in the array
+	at edu.drexel.se320.BinarySearch.binarySearchImplementation(BinarySearch.java:33)
+	at edu.drexel.se320.BinarySearchBase.find(BinarySearchBase.java:8)
+	at edu.drexel.se320.PropertyTests.checkEvenSizedArrayRightElt(PropertyTests.java:84)
+</failure>
+  </testcase>
+  <testcase name="checkLastElt" classname="edu.drexel.se320.PropertyTests" time="0.082">
+    <failure message="org.opentest4j.AssertionFailedError: Property [PropertyTests:checkLastElt] failed with sample {0=Integer[] [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Property [PropertyTests:checkLastElt] failed with sample {0=Integer[] [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}
+	at net.jqwik.engine.properties.PropertyCheckResult.determineThrowable(PropertyCheckResult.java:193)
+	at net.jqwik.engine.properties.PropertyCheckResult.&lt;init&gt;(PropertyCheckResult.java:185)
+	at net.jqwik.engine.properties.PropertyCheckResult.failed(PropertyCheckResult.java:68)
+	at net.jqwik.engine.properties.GenericProperty.shrinkAndCreateCheckResult(GenericProperty.java:187)
+	at net.jqwik.engine.properties.GenericProperty.check(GenericProperty.java:80)
+	at net.jqwik.engine.execution.CheckedProperty.check(CheckedProperty.java:67)
+	at net.jqwik.engine.execution.PropertyMethodExecutor.executeProperty(PropertyMethodExecutor.java:90)
+	at net.jqwik.engine.execution.PropertyMethodExecutor.executeMethod(PropertyMethodExecutor.java:69)
+	at net.jqwik.engine.execution.PropertyMethodExecutor.lambda$execute$0(PropertyMethodExecutor.java:49)
+	at net.jqwik.api.lifecycle.AroundPropertyHook.lambda$static$0(AroundPropertyHook.java:46)
+	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$0(HookSupport.java:26)
+	at net.jqwik.api.lifecycle.PropertyExecutor.executeAndFinally(PropertyExecutor.java:39)
+	at net.jqwik.engine.hooks.lifecycle.PropertyLifecycleMethodsHook.aroundProperty(PropertyLifecycleMethodsHook.java:56)
+	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$1(HookSupport.java:31)
+	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$0(HookSupport.java:26)
+	at net.jqwik.engine.hooks.statistics.StatisticsHook.aroundProperty(StatisticsHook.java:37)
+	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$1(HookSupport.java:31)
+	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$0(HookSupport.java:26)
+	at net.jqwik.engine.hooks.lifecycle.AutoCloseableHook.aroundProperty(AutoCloseableHook.java:13)
+	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$1(HookSupport.java:31)
+	at net.jqwik.engine.execution.PropertyMethodExecutor.execute(PropertyMethodExecutor.java:47)
+	at net.jqwik.engine.execution.PropertyTaskCreator.executeTestMethod(PropertyTaskCreator.java:166)
+	at net.jqwik.engine.execution.PropertyTaskCreator.lambda$createTask$1(PropertyTaskCreator.java:51)
+	at net.jqwik.engine.execution.lifecycle.CurrentDomainContext.runWithContext(CurrentDomainContext.java:30)
+	at net.jqwik.engine.execution.PropertyTaskCreator.lambda$createTask$2(PropertyTaskCreator.java:50)
+	at net.jqwik.engine.execution.pipeline.ExecutionTask$1.lambda$execute$0(ExecutionTask.java:31)
+	at net.jqwik.engine.execution.lifecycle.CurrentTestDescriptor.runWithDescriptor(CurrentTestDescriptor.java:18)
+	at net.jqwik.engine.execution.pipeline.ExecutionTask$1.execute(ExecutionTask.java:31)
+	at net.jqwik.engine.execution.pipeline.ExecutionPipeline.runToTermination(ExecutionPipeline.java:82)
+	at net.jqwik.engine.execution.JqwikExecutor.execute(JqwikExecutor.java:51)
+	at net.jqwik.engine.JqwikTestEngine.executeTests(JqwikTestEngine.java:71)
+	at net.jqwik.engine.JqwikTestEngine.execute(JqwikTestEngine.java:53)
+</failure>
+  </testcase>
+  <testcase name="checkEvenSizedArrayLeftElt" classname="edu.drexel.se320.PropertyTests" time="0.04">
+    <failure message="java.util.NoSuchElementException: No such element exists in the array" type="java.util.NoSuchElementException">java.util.NoSuchElementException: No such element exists in the array
+	at edu.drexel.se320.BinarySearch.binarySearchImplementation(BinarySearch.java:33)
+	at edu.drexel.se320.BinarySearchBase.find(BinarySearchBase.java:8)
+	at edu.drexel.se320.PropertyTests.checkEvenSizedArrayLeftElt(PropertyTests.java:94)
+</failure>
+  </testcase>
+  <testcase name="checkEmptyArray" classname="edu.drexel.se320.PropertyTests" time="0.015"/>
+  <testcase name="checkForNullElt" classname="edu.drexel.se320.PropertyTests" time="0.132"/>
+  <testcase name="checkOddSizedArrayElt" classname="edu.drexel.se320.PropertyTests" time="0.068"/>
+  <testcase name="checkFirstElt" classname="edu.drexel.se320.PropertyTests" time="0.123">
+    <failure message="org.opentest4j.AssertionFailedError: Property [PropertyTests:checkFirstElt] failed with sample {0=Integer[] [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Property [PropertyTests:checkFirstElt] failed with sample {0=Integer[] [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}
+	at net.jqwik.engine.properties.PropertyCheckResult.determineThrowable(PropertyCheckResult.java:193)
+	at net.jqwik.engine.properties.PropertyCheckResult.&lt;init&gt;(PropertyCheckResult.java:185)
+	at net.jqwik.engine.properties.PropertyCheckResult.failed(PropertyCheckResult.java:68)
+	at net.jqwik.engine.properties.GenericProperty.shrinkAndCreateCheckResult(GenericProperty.java:187)
+	at net.jqwik.engine.properties.GenericProperty.check(GenericProperty.java:80)
+	at net.jqwik.engine.execution.CheckedProperty.check(CheckedProperty.java:67)
+	at net.jqwik.engine.execution.PropertyMethodExecutor.executeProperty(PropertyMethodExecutor.java:90)
+	at net.jqwik.engine.execution.PropertyMethodExecutor.executeMethod(PropertyMethodExecutor.java:69)
+	at net.jqwik.engine.execution.PropertyMethodExecutor.lambda$execute$0(PropertyMethodExecutor.java:49)
+	at net.jqwik.api.lifecycle.AroundPropertyHook.lambda$static$0(AroundPropertyHook.java:46)
+	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$0(HookSupport.java:26)
+	at net.jqwik.api.lifecycle.PropertyExecutor.executeAndFinally(PropertyExecutor.java:39)
+	at net.jqwik.engine.hooks.lifecycle.PropertyLifecycleMethodsHook.aroundProperty(PropertyLifecycleMethodsHook.java:56)
+	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$1(HookSupport.java:31)
+	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$0(HookSupport.java:26)
+	at net.jqwik.engine.hooks.statistics.StatisticsHook.aroundProperty(StatisticsHook.java:37)
+	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$1(HookSupport.java:31)
+	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$0(HookSupport.java:26)
+	at net.jqwik.engine.hooks.lifecycle.AutoCloseableHook.aroundProperty(AutoCloseableHook.java:13)
+	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$1(HookSupport.java:31)
+	at net.jqwik.engine.execution.PropertyMethodExecutor.execute(PropertyMethodExecutor.java:47)
+	at net.jqwik.engine.execution.PropertyTaskCreator.executeTestMethod(PropertyTaskCreator.java:166)
+	at net.jqwik.engine.execution.PropertyTaskCreator.lambda$createTask$1(PropertyTaskCreator.java:51)
+	at net.jqwik.engine.execution.lifecycle.CurrentDomainContext.runWithContext(CurrentDomainContext.java:30)
+	at net.jqwik.engine.execution.PropertyTaskCreator.lambda$createTask$2(PropertyTaskCreator.java:50)
+	at net.jqwik.engine.execution.pipeline.ExecutionTask$1.lambda$execute$0(ExecutionTask.java:31)
+	at net.jqwik.engine.execution.lifecycle.CurrentTestDescriptor.runWithDescriptor(CurrentTestDescriptor.java:18)
+	at net.jqwik.engine.execution.pipeline.ExecutionTask$1.execute(ExecutionTask.java:31)
+	at net.jqwik.engine.execution.pipeline.ExecutionPipeline.runToTermination(ExecutionPipeline.java:82)
+	at net.jqwik.engine.execution.JqwikExecutor.execute(JqwikExecutor.java:51)
+	at net.jqwik.engine.JqwikTestEngine.executeTests(JqwikTestEngine.java:71)
+	at net.jqwik.engine.JqwikTestEngine.execute(JqwikTestEngine.java:53)
+</failure>
+  </testcase>
+  <system-out><![CDATA[timestamp = 2026-10-28T15:49:58.719023700, PropertyTests:checkMiddleElt = 
+  org.opentest4j.AssertionFailedError:
+    Property [PropertyTests:checkMiddleElt] failed with sample {0=Integer[] [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}
+
+                              |-----------------------jqwik-----------------------
+tries = 2                     | # of calls to property
+checks = 2                    | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 5          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = 1041750896636624254    | random seed to reproduce generated values
+
+Shrunk Sample (36 steps)
+------------------------
+  arr:
+    Integer[] [
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    ]
+
+Original Sample
+---------------
+  arr:
+    Integer[] [
+      0, 2, 2, 2, 2, 3, 4, 4, 4, 5, 6, 6, 7, 8, 9, 10, 10, 14, 21, 24, 25, 32, 33, 43, 62, 65, 72, 
+      74, 92, 99
+    ]
+
+
+timestamp = 2026-10-28T15:49:58.869092400, PropertyTests:checkSingleArrayElt = 
+                              |-----------------------jqwik-----------------------
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 9          | # of all combined edge cases
+edge-cases#tried = 9          | # of edge cases tried in current run
+seed = 738656337954209901     | random seed to reproduce generated values
+
+
+timestamp = 2026-10-28T15:49:58.915090800, PropertyTests:checkNullArray = 
+                              |-----------------------jqwik-----------------------
+tries = 101                   | # of calls to property
+checks = 101                  | # of not rejected calls
+generation = EXHAUSTIVE       | parameters are exhaustively generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 0          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = -7246966602107707144   | random seed to reproduce generated values
+
+
+timestamp = 2026-10-28T15:49:59.150163, PropertyTests:checkEvenSizedArrayRightElt = 
+  java.util.NoSuchElementException:
+    No such element exists in the array
+
+                              |-----------------------jqwik-----------------------
+tries = 1                     | # of calls to property
+checks = 1                    | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 5          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = -1617122006420380445   | random seed to reproduce generated values
+
+Shrunk Sample (50 steps)
+------------------------
+  arr:
+    Integer[] [
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    ]
+
+Original Sample
+---------------
+  arr:
+    Integer[] [
+      0, 0, 0, 4, 6, 7, 8, 9, 9, 12, 12, 13, 15, 17, 21, 21, 23, 24, 27, 29, 30, 42, 49, 53, 54, 75, 
+      79, 84, 100, 100
+    ]
+
+  Original Error
+  --------------
+  java.util.NoSuchElementException:
+    No such element exists in the array
+
+
+timestamp = 2026-10-28T15:49:59.243696200, PropertyTests:checkLastElt = 
+  org.opentest4j.AssertionFailedError:
+    Property [PropertyTests:checkLastElt] failed with sample {0=Integer[] [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}
+
+                              |-----------------------jqwik-----------------------
+tries = 7                     | # of calls to property
+checks = 7                    | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 5          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = 1884558209177709969    | random seed to reproduce generated values
+
+Shrunk Sample (29 steps)
+------------------------
+  arr:
+    Integer[] [
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    ]
+
+Original Sample
+---------------
+  arr:
+    Integer[] [
+      3, 3, 4, 5, 5, 6, 7, 7, 9, 9, 10, 10, 15, 23, 30, 32, 36, 38, 45, 49, 55, 56, 62, 69, 79, 84, 
+      93, 97, 100, 100
+    ]
+
+
+timestamp = 2026-10-28T15:49:59.290221100, PropertyTests:checkEvenSizedArrayLeftElt = 
+  java.util.NoSuchElementException:
+    No such element exists in the array
+
+                              |-----------------------jqwik-----------------------
+tries = 1                     | # of calls to property
+checks = 1                    | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 5          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = 1402162012316916672    | random seed to reproduce generated values
+
+Shrunk Sample (30 steps)
+------------------------
+  arr:
+    Integer[] [
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    ]
+
+Original Sample
+---------------
+  arr:
+    Integer[] [
+      0, 0, 0, 0, 1, 2, 4, 5, 7, 7, 10, 11, 12, 22, 22, 27, 28, 28, 29, 32, 34, 39, 44, 58, 59, 72, 
+      83, 89, 92, 100
+    ]
+
+  Original Error
+  --------------
+  java.util.NoSuchElementException:
+    No such element exists in the array
+
+
+timestamp = 2026-10-28T15:49:59.311218, PropertyTests:checkEmptyArray = 
+                              |-----------------------jqwik-----------------------
+tries = 101                   | # of calls to property
+checks = 101                  | # of not rejected calls
+generation = EXHAUSTIVE       | parameters are exhaustively generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 0          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = 2727682176398302969    | random seed to reproduce generated values
+
+
+timestamp = 2026-10-28T15:49:59.443759600, PropertyTests:checkForNullElt = 
+                              |-----------------------jqwik-----------------------
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 5          | # of all combined edge cases
+edge-cases#tried = 5          | # of edge cases tried in current run
+seed = 8113939599980168030    | random seed to reproduce generated values
+
+
+timestamp = 2026-10-28T15:49:59.513280300, PropertyTests:checkOddSizedArrayElt = 
+                              |-----------------------jqwik-----------------------
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 5          | # of all combined edge cases
+edge-cases#tried = 5          | # of edge cases tried in current run
+seed = -930349793906319142    | random seed to reproduce generated values
+
+
+timestamp = 2026-10-28T15:49:59.629802300, PropertyTests:checkFirstElt = 
+  org.opentest4j.AssertionFailedError:
+    Property [PropertyTests:checkFirstElt] failed with sample {0=Integer[] [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}
+
+                              |-----------------------jqwik-----------------------
+tries = 3                     | # of calls to property
+checks = 3                    | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 5          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = -6622705373041275587   | random seed to reproduce generated values
+
+Shrunk Sample (27 steps)
+------------------------
+  arr:
+    Integer[] [
+      1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+    ]
+
+Original Sample
+---------------
+  arr:
+    Integer[] [
+      1, 1, 1, 2, 2, 3, 3, 5, 5, 6, 8, 10, 10, 12, 16, 17, 19, 20, 23, 24, 26, 32, 32, 55, 66, 69, 
+      74, 80, 97, 100
+    ]
+
+
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
