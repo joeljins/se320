@@ -17,7 +17,7 @@
 <div class="tab-container">
 <ul class="tabLinks">
 <li>
-<a class="failureGroup" href="#">Gradle Test Run :test</a>
+<a class="successGroup" href="#">Gradle Test Run :test</a>
 </li>
 </ul>
 <div class="tab">
@@ -41,13 +41,13 @@
 <tr>
 <td>
 <div class="infoBox">
-<div class="counter">10</div>
+<div class="counter">13</div>
 <p>tests</p>
 </div>
 </td>
 <td>
 <div class="infoBox">
-<div class="counter">5</div>
+<div class="counter">0</div>
 <p>failures</p>
 </div>
 </td>
@@ -59,7 +59,7 @@
 </td>
 <td>
 <div class="infoBox duration">
-<div class="counter">1.603s</div>
+<div class="counter">0.919s</div>
 <p>duration</p>
 </div>
 </td>
@@ -68,98 +68,14 @@
 </div>
 </td>
 <td>
-<div class="infoBox failures successRate">
-<div class="percent">50%</div>
+<div class="infoBox success successRate">
+<div class="percent">100%</div>
 <p>successful</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
-<div class="tab-container">
-<ul class="tabLinks">
-<li>
-<a class="" href="#">Failed</a>
-</li>
-<li>
-<a class="" href="#">All</a>
-</li>
-</ul>
-<div class="tab">
-<h2>Failed</h2>
-<table class="test-results sortable">
-<thead>
-<tr>
-<th>Child</th>
-<th hidden="">Name</th>
-<th data-sort-default="desc">Tests</th>
-<th data-sort-default="desc">Failures</th>
-<th data-sort-default="desc">Skipped</th>
-<th data-sort-default="desc">Duration</th>
-<th>Success rate</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="failures">
-<a href="checkEvenSizedArrayLeftElt.html">checkEvenSizedArrayLeftElt</a>
-</td>
-<td class="path" hidden="">checkEvenSizedArrayLeftElt</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td data-sort-value="40">0.040s</td>
-<td class="failures" data-sort-value="0">0%</td>
-</tr>
-<tr>
-<td class="failures">
-<a href="checkEvenSizedArrayRightElt.html">checkEvenSizedArrayRightElt</a>
-</td>
-<td class="path" hidden="">checkEvenSizedArrayRightElt</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td data-sort-value="254">0.254s</td>
-<td class="failures" data-sort-value="0">0%</td>
-</tr>
-<tr>
-<td class="failures">
-<a href="checkFirstElt.html">checkFirstElt</a>
-</td>
-<td class="path" hidden="">checkFirstElt</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td data-sort-value="123">0.123s</td>
-<td class="failures" data-sort-value="0">0%</td>
-</tr>
-<tr>
-<td class="failures">
-<a href="checkLastElt.html">checkLastElt</a>
-</td>
-<td class="path" hidden="">checkLastElt</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td data-sort-value="82">0.082s</td>
-<td class="failures" data-sort-value="0">0%</td>
-</tr>
-<tr>
-<td class="failures">
-<a href="checkMiddleElt.html">checkMiddleElt</a>
-</td>
-<td class="path" hidden="">checkMiddleElt</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td data-sort-value="691">0.691s</td>
-<td class="failures" data-sort-value="0">0%</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="tab">
-<h2>All</h2>
 <table class="test-results sortable">
 <thead>
 <tr>
@@ -175,47 +91,36 @@
 <tbody>
 <tr>
 <td class="success">
+<a href="checkEltNotInWithoutChangingArray.html">checkEltNotInWithoutChangingArray</a>
+</td>
+<td class="path" hidden="">checkEltNotInWithoutChangingArray</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td data-sort-value="26">0.026s</td>
+<td class="success" data-sort-value="100">100%</td>
+</tr>
+<tr>
+<td class="success">
 <a href="checkEmptyArray.html">checkEmptyArray</a>
 </td>
 <td class="path" hidden="">checkEmptyArray</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td data-sort-value="15">0.015s</td>
+<td data-sort-value="6">0.006s</td>
 <td class="success" data-sort-value="100">100%</td>
 </tr>
 <tr>
-<td class="failures">
-<a href="checkEvenSizedArrayLeftElt.html">checkEvenSizedArrayLeftElt</a>
-</td>
-<td class="path" hidden="">checkEvenSizedArrayLeftElt</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td data-sort-value="40">0.040s</td>
-<td class="failures" data-sort-value="0">0%</td>
-</tr>
-<tr>
-<td class="failures">
-<a href="checkEvenSizedArrayRightElt.html">checkEvenSizedArrayRightElt</a>
-</td>
-<td class="path" hidden="">checkEvenSizedArrayRightElt</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td data-sort-value="254">0.254s</td>
-<td class="failures" data-sort-value="0">0%</td>
-</tr>
-<tr>
-<td class="failures">
+<td class="success">
 <a href="checkFirstElt.html">checkFirstElt</a>
 </td>
 <td class="path" hidden="">checkFirstElt</td>
 <td>1</td>
-<td>1</td>
 <td>0</td>
-<td data-sort-value="123">0.123s</td>
-<td class="failures" data-sort-value="0">0%</td>
+<td>0</td>
+<td data-sort-value="18">0.018s</td>
+<td class="success" data-sort-value="100">100%</td>
 </tr>
 <tr>
 <td class="success">
@@ -225,30 +130,52 @@
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td data-sort-value="132">0.132s</td>
+<td data-sort-value="31">0.031s</td>
 <td class="success" data-sort-value="100">100%</td>
 </tr>
 <tr>
-<td class="failures">
+<td class="success">
+<a href="checkGreaterEltNotInArray.html">checkGreaterEltNotInArray</a>
+</td>
+<td class="path" hidden="">checkGreaterEltNotInArray</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td data-sort-value="34">0.034s</td>
+<td class="success" data-sort-value="100">100%</td>
+</tr>
+<tr>
+<td class="success">
 <a href="checkLastElt.html">checkLastElt</a>
 </td>
 <td class="path" hidden="">checkLastElt</td>
 <td>1</td>
-<td>1</td>
 <td>0</td>
-<td data-sort-value="82">0.082s</td>
-<td class="failures" data-sort-value="0">0%</td>
+<td>0</td>
+<td data-sort-value="29">0.029s</td>
+<td class="success" data-sort-value="100">100%</td>
 </tr>
 <tr>
-<td class="failures">
+<td class="success">
+<a href="checkLesserEltNotInArray.html">checkLesserEltNotInArray</a>
+</td>
+<td class="path" hidden="">checkLesserEltNotInArray</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td data-sort-value="36">0.036s</td>
+<td class="success" data-sort-value="100">100%</td>
+</tr>
+<tr>
+<td class="success">
 <a href="checkMiddleElt.html">checkMiddleElt</a>
 </td>
 <td class="path" hidden="">checkMiddleElt</td>
 <td>1</td>
-<td>1</td>
 <td>0</td>
-<td data-sort-value="691">0.691s</td>
-<td class="failures" data-sort-value="0">0%</td>
+<td>0</td>
+<td data-sort-value="332">0.332s</td>
+<td class="success" data-sort-value="100">100%</td>
 </tr>
 <tr>
 <td class="success">
@@ -258,7 +185,7 @@
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td data-sort-value="45">0.045s</td>
+<td data-sort-value="25">0.025s</td>
 <td class="success" data-sort-value="100">100%</td>
 </tr>
 <tr>
@@ -269,7 +196,7 @@
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td data-sort-value="68">0.068s</td>
+<td data-sort-value="24">0.024s</td>
 <td class="success" data-sort-value="100">100%</td>
 </tr>
 <tr>
@@ -280,13 +207,33 @@
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td data-sort-value="108">0.108s</td>
+<td data-sort-value="31">0.031s</td>
+<td class="success" data-sort-value="100">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="checkWithoutChangingArray.html">checkWithoutChangingArray</a>
+</td>
+<td class="path" hidden="">checkWithoutChangingArray</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td data-sort-value="156">0.156s</td>
+<td class="success" data-sort-value="100">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="searchEltInArrayWithEltDuplicates.html">searchEltInArrayWithEltDuplicates</a>
+</td>
+<td class="path" hidden="">searchEltInArrayWithEltDuplicates</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td data-sort-value="146">0.146s</td>
 <td class="success" data-sort-value="100">100%</td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -299,7 +246,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="https://www.gradle.org">Gradle 9.8.0</a> at Oct 28, 2026, 3:49:59 PM</p>
+<a href="https://www.gradle.org">Gradle 9.8.0</a> at Oct 28, 2026, 9:32:52 PM</p>
 </div>
 </div>
 </body>

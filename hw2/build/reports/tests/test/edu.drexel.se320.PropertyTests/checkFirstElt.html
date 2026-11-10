@@ -18,7 +18,7 @@
 <div class="tab-container">
 <ul class="tabLinks">
 <li>
-<a class="failureGroup" href="#">Gradle Test Run :test</a>
+<a class="successGroup" href="#">Gradle Test Run :test</a>
 </li>
 </ul>
 <div class="tab">
@@ -51,7 +51,7 @@
 </td>
 <td>
 <div class="infoBox">
-<div class="counter">1</div>
+<div class="counter">0</div>
 <p>failures</p>
 </div>
 </td>
@@ -63,7 +63,7 @@
 </td>
 <td>
 <div class="infoBox duration">
-<div class="counter">0.123s</div>
+<div class="counter">0.018s</div>
 <p>duration</p>
 </div>
 </td>
@@ -72,55 +72,13 @@
 </div>
 </td>
 <td>
-<div class="infoBox failures successRate">
-<div class="percent">0%</div>
+<div class="infoBox success successRate">
+<div class="percent">100%</div>
 <p>successful</p>
 </div>
 </td>
 </tr>
 </table>
-</div>
-<div class="result-details">
-<h3>Failure details</h3>
-<span class="code">
-<div class="clipboard-copy-btn-container">
-<button class="clipboard-copy-btn" aria-label="Copy to clipboard" data-copy-element-id="root-0-test-failure-checkFirstElt">Copy</button>
-</div>
-<pre id="root-0-test-failure-checkFirstElt">org.opentest4j.AssertionFailedError: Property [PropertyTests:checkFirstElt] failed with sample {0=Integer[] [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}
-	at net.jqwik.engine.properties.PropertyCheckResult.determineThrowable(PropertyCheckResult.java:193)
-	at net.jqwik.engine.properties.PropertyCheckResult.&lt;init&gt;(PropertyCheckResult.java:185)
-	at net.jqwik.engine.properties.PropertyCheckResult.failed(PropertyCheckResult.java:68)
-	at net.jqwik.engine.properties.GenericProperty.shrinkAndCreateCheckResult(GenericProperty.java:187)
-	at net.jqwik.engine.properties.GenericProperty.check(GenericProperty.java:80)
-	at net.jqwik.engine.execution.CheckedProperty.check(CheckedProperty.java:67)
-	at net.jqwik.engine.execution.PropertyMethodExecutor.executeProperty(PropertyMethodExecutor.java:90)
-	at net.jqwik.engine.execution.PropertyMethodExecutor.executeMethod(PropertyMethodExecutor.java:69)
-	at net.jqwik.engine.execution.PropertyMethodExecutor.lambda$execute$0(PropertyMethodExecutor.java:49)
-	at net.jqwik.api.lifecycle.AroundPropertyHook.lambda$static$0(AroundPropertyHook.java:46)
-	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$0(HookSupport.java:26)
-	at net.jqwik.api.lifecycle.PropertyExecutor.executeAndFinally(PropertyExecutor.java:39)
-	at net.jqwik.engine.hooks.lifecycle.PropertyLifecycleMethodsHook.aroundProperty(PropertyLifecycleMethodsHook.java:56)
-	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$1(HookSupport.java:31)
-	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$0(HookSupport.java:26)
-	at net.jqwik.engine.hooks.statistics.StatisticsHook.aroundProperty(StatisticsHook.java:37)
-	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$1(HookSupport.java:31)
-	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$0(HookSupport.java:26)
-	at net.jqwik.engine.hooks.lifecycle.AutoCloseableHook.aroundProperty(AutoCloseableHook.java:13)
-	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$1(HookSupport.java:31)
-	at net.jqwik.engine.execution.PropertyMethodExecutor.execute(PropertyMethodExecutor.java:47)
-	at net.jqwik.engine.execution.PropertyTaskCreator.executeTestMethod(PropertyTaskCreator.java:166)
-	at net.jqwik.engine.execution.PropertyTaskCreator.lambda$createTask$1(PropertyTaskCreator.java:51)
-	at net.jqwik.engine.execution.lifecycle.CurrentDomainContext.runWithContext(CurrentDomainContext.java:30)
-	at net.jqwik.engine.execution.PropertyTaskCreator.lambda$createTask$2(PropertyTaskCreator.java:50)
-	at net.jqwik.engine.execution.pipeline.ExecutionTask$1.lambda$execute$0(ExecutionTask.java:31)
-	at net.jqwik.engine.execution.lifecycle.CurrentTestDescriptor.runWithDescriptor(CurrentTestDescriptor.java:18)
-	at net.jqwik.engine.execution.pipeline.ExecutionTask$1.execute(ExecutionTask.java:31)
-	at net.jqwik.engine.execution.pipeline.ExecutionPipeline.runToTermination(ExecutionPipeline.java:82)
-	at net.jqwik.engine.execution.JqwikExecutor.execute(JqwikExecutor.java:51)
-	at net.jqwik.engine.JqwikTestEngine.executeTests(JqwikTestEngine.java:71)
-	at net.jqwik.engine.JqwikTestEngine.execute(JqwikTestEngine.java:53)
-</pre>
-</span>
 </div>
 </div>
 </div>
@@ -130,35 +88,17 @@
 <div class="clipboard-copy-btn-container">
 <button class="clipboard-copy-btn" aria-label="Copy to clipboard" data-copy-element-id="root-0-test-stdout-checkFirstElt">Copy</button>
 </div>
-<pre id="root-0-test-stdout-checkFirstElt">timestamp = 2026-10-28T15:49:59.629802300, PropertyTests:checkFirstElt = 
-  org.opentest4j.AssertionFailedError:
-    Property [PropertyTests:checkFirstElt] failed with sample {0=Integer[] [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}
-
+<pre id="root-0-test-stdout-checkFirstElt">timestamp = 2026-10-28T21:32:52.351278100, PropertyTests:checkFirstElt = 
                               |-----------------------jqwik-----------------------
-tries = 3                     | # of calls to property
-checks = 3                    | # of not rejected calls
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
 generation = RANDOMIZED       | parameters are randomly generated
 after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
 when-fixed-seed = ALLOW       | fixing the random seed is allowed
 edge-cases#mode = MIXIN       | edge cases are mixed in
 edge-cases#total = 5          | # of all combined edge cases
-edge-cases#tried = 0          | # of edge cases tried in current run
-seed = -6622705373041275587   | random seed to reproduce generated values
-
-Shrunk Sample (27 steps)
-------------------------
-  arr:
-    Integer[] [
-      1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-    ]
-
-Original Sample
----------------
-  arr:
-    Integer[] [
-      1, 1, 1, 2, 2, 3, 3, 5, 5, 6, 8, 10, 10, 12, 16, 17, 19, 20, 23, 24, 26, 32, 32, 55, 66, 69, 
-      74, 80, 97, 100
-    ]
+edge-cases#tried = 5          | # of edge cases tried in current run
+seed = 2504266178309815234    | random seed to reproduce generated values
 
 
 </pre>
@@ -174,7 +114,7 @@ Original Sample
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="https://www.gradle.org">Gradle 9.8.0</a> at Oct 28, 2026, 3:49:59 PM</p>
+<a href="https://www.gradle.org">Gradle 9.8.0</a> at Oct 28, 2026, 9:32:52 PM</p>
 </div>
 </div>
 </body>

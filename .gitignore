@@ -1,0 +1,8 @@
+# Gradle
+.gradle/
+build/
+**/build/
+
+# Gradle wrapper (keep these committed)
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
