@@ -1,17 +1,22 @@
 package edu.drexel.se320;
 
 import java.io.IOException;
-import java.lang.IllegalArgumentException;
-import java.lang.StringBuilder;
-import java.lang.UnsupportedOperationException;
 
 public class Client {
 
     private String lastResult;
+    private ServerConnection conn;
     StringBuilder sb = null;
 
+    /*
     public Client() {
         lastResult = "";
+    }
+    */
+
+    public Client(ServerConnection conn) {
+        this.conn = conn;
+        this.lastResult = "";
     }
 
     public String requestFile(String server, String file) {
@@ -27,6 +32,7 @@ public class Client {
 	//
 	// To be clear: do NOT implement the methods below.  Instead, make it possible
 	// to run the code below with a mock, rather than this dummy implementation.
+    /*
         ServerConnection conn = new ServerConnection() {
             public boolean connectTo(String address) throws IOException {
                 throw new UnsupportedOperationException();
@@ -44,7 +50,7 @@ public class Client {
                 throw new UnsupportedOperationException();
             }
         };
-
+    */
 	// We'll use a StringBuilder to construct large strings more efficiently
 	// than repeated linear calls to string concatenation.
         sb = new StringBuilder();
