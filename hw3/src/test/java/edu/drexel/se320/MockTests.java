@@ -1,3 +1,15 @@
+/*
+In class we discussed passing a collaborator, factory methods, and external factories.
+I chose to refactor the code by passing a collaborator to the Client constructor.
+I felt this would be the most straightforward approach. With this approach, the only additional effort I had to put in was
+modifying the constructor to accept a ServerConnection object. After passing in the mock ServerConnection object,
+I did not to call any methods on the Client object but just the mock object. 
+If I had chosen to use a factory method, I would have needed to create a method in the Client class that returns a ServerConnection object. 
+Although this would not have been necessary for this assignment, 
+using a different implementation instead of the default ServerConnection would require overriding the factory method in a subclass of Client.
+Jf I chose to use an external factory, I would have to create a new class that implements the ServerConnectionFactory interface.
+
+*/
 package edu.drexel.se320;
 
 import java.io.IOException;
@@ -9,13 +21,13 @@ import org.junit.jupiter.api.Test;
 import static org.mockito.ArgumentMatchers.anyString;
 import org.mockito.InOrder;
 import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
 
 public class MockTests {
 
@@ -53,7 +65,9 @@ public class MockTests {
     public void test1() throws IOException {
         ServerConnection sc = mock(ServerConnection.class);
         Client c = new Client(sc);
+
         when(sc.connectTo(anyString())).thenReturn(false);
+
         assertNull(c.requestFile("DUMMY", "DUMMY"));
 
         verify(sc, never()).requestFileContents(anyString());
@@ -71,11 +85,12 @@ public class MockTests {
     public void test2() throws IOException {
         ServerConnection sc = mock(ServerConnection.class);
         Client c = new Client(sc);
+
         when(sc.connectTo(anyString())).thenReturn(true);
         when(sc.requestFileContents(anyString())).thenReturn(false);
+
         assertNull(c.requestFile("DUMMY", "DUMMY"));
 
-        // verify(sc, never()).requestFileContents(anyString());
         verify(sc, never()).read();
         verify(sc, never()).moreBytes();
         verify(sc, times(1)).closeConnection();
@@ -183,8 +198,117 @@ public class MockTests {
     // If read() ever returns null, the client treats this as the empty string.
     //This stands in contrast to appending "null" to the file contents read thus far, 
     // which is the default if you simply append null. In Java, "asdf"+null evaluates to "asdfnull".
+    @Test
+    public void test9() throws IOException {
+        ServerConnection sc = mock(ServerConnection.class);
+        Client c = new Client(sc);
 
+        when(sc.connectTo(anyString())).thenReturn(true);
+        when(sc.requestFileContents(anyString())).thenReturn(true);
+        when(sc.moreBytes()).thenReturn(true).thenReturn(false);
+        when(sc.read()).thenReturn(null);
 
+        assertEquals("", c.requestFile("DUMMY", "DUMMY"));
 
+        verify(sc, atLeastOnce()).read();
+    } 
+
+    // Test that if any of the connection operations fails the first time it is executed with an IOException, 
+    // the client returns null.
+    // For connectTo()
+    @Test
+    public void test10a() throws IOException {
+        ServerConnection sc = mock(ServerConnection.class);
+        Client c = new Client(sc);
+
+        when(sc.connectTo(anyString())).thenThrow(new IOException());
+
+        assertNull(c.requestFile("DUMMY", "DUMMY"));
+
+        verify(sc, times(1)).connectTo(anyString());
+        verify(sc, never()).requestFileContents(anyString());
+        verify(sc, never()).moreBytes();
+        verify(sc, never()).read();
+        verify(sc, never()).closeConnection();
+    } 
+
+    // For requestFileContents()
+    @Test
+    public void test10b() throws IOException {
+        ServerConnection sc = mock(ServerConnection.class);
+        Client c = new Client(sc);
+
+        when(sc.connectTo(anyString())).thenReturn(true);
+        when(sc.requestFileContents(anyString())).thenThrow(new IOException());
+
+        assertNull(c.requestFile("DUMMY", "DUMMY"));
+
+        verify(sc, times(1)).connectTo(anyString());
+        verify(sc, times(1)).requestFileContents(anyString());
+        verify(sc, never()).moreBytes();
+        verify(sc, never()).read();
+        verify(sc, never()).closeConnection();
+    } 
+
+    // For moreBytes()
+    @Test
+    public void test10c() throws IOException {
+        ServerConnection sc = mock(ServerConnection.class);
+        Client c = new Client(sc);
+
+        when(sc.connectTo(anyString())).thenReturn(true);
+        when(sc.requestFileContents(anyString())).thenReturn(true);
+        when(sc.moreBytes()).thenThrow(new IOException());
+
+        assertNull(c.requestFile("DUMMY", "DUMMY"));
+
+        verify(sc, times(1)).connectTo(anyString());
+        verify(sc, times(1)).requestFileContents(anyString());
+        verify(sc, times(1)).moreBytes();
+        verify(sc, never()).read();
+        verify(sc, never()).closeConnection();
+    }
+
+    // For read()
+    @Test
+    public void test10d() throws IOException {
+        ServerConnection sc = mock(ServerConnection.class);
+        Client c = new Client(sc);
+
+        when(sc.connectTo(anyString())).thenReturn(true);
+        when(sc.requestFileContents(anyString())).thenReturn(true);
+        when(sc.moreBytes()).thenReturn(true);
+        when(sc.read()).thenThrow(new IOException());
+
+        assertNull(c.requestFile("DUMMY", "DUMMY"));
+
+        verify(sc, times(1)).connectTo(anyString());
+        verify(sc, times(1)).requestFileContents(anyString());
+        verify(sc, times(1)).moreBytes();
+        verify(sc, times(1)).read();
+        verify(sc, never()).closeConnection();
+    } 
+
+// For closeConnection()
+    @Test
+    public void test10e() throws IOException {
+        ServerConnection sc = mock(ServerConnection.class);
+        Client c = new Client(sc);
+
+        when(sc.connectTo(anyString())).thenReturn(true);
+        when(sc.requestFileContents(anyString())).thenReturn(true);
+        when(sc.moreBytes()).thenReturn(true).thenReturn(false);
+        when(sc.read()).thenReturn("DUMMY");
+        // when(sc.closeConnection()).thenThrow(new IOException());
+        doThrow(new IOException()).when(sc).closeConnection();
+
+        assertNull(c.requestFile("DUMMY", "DUMMY"));
+
+        verify(sc, times(1)).connectTo(anyString());
+        verify(sc, times(1)).requestFileContents(anyString());
+        verify(sc, times(2)).moreBytes();
+        verify(sc, times(1)).read();
+        verify(sc, times(1)).closeConnection();
+    }
 
 }
