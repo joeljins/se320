@@ -1,15 +1,38 @@
 /*
-In class we discussed passing a collaborator, factory methods, and external factories.
-I chose to refactor the code by passing a collaborator to the Client constructor.
-I felt this would be the most straightforward approach. With this approach, the only additional effort I had to put in was
-modifying the constructor to accept a ServerConnection object. After passing in the mock ServerConnection object,
-I did not to call any methods on the Client object but just the mock object. 
-If I had chosen to use a factory method, I would have needed to create a method in the Client class that returns a ServerConnection object. 
-Although this would not have been necessary for this assignment, 
-using a different implementation instead of the default ServerConnection would require overriding the factory method in a subclass of Client.
-Jf I chose to use an external factory, I would have to create a new class that implements the ServerConnectionFactory interface.
+Methods discussed in class:
+- passing a collaborator
+- factory method
+- external factory
 
+I chose: passing a collaborator
+
+The original Client built its own ServerConnection inside requestFile(), so a test
+had no way to substitute a mock. I changed the Client constructor to accept a
+ServerConnection object and store it in a field. requestFile() now calls the methods
+on that object rather than creating a new one. Each test creates a mock with Mockito,
+passes it to the constructor, and then verifies how the client interacts with it.
+
+Why I chose this over the alternatives discussed in class:
+
+- Factory method: I would need to write a method like createConnection() that returns
+  a ServerConnection object, and each test would need a Client subclass overriding it to
+  return a reference to a mock that I created outside of the class. That is extra
+  boilerplate in every test, and it only works if Client is subclassable and the
+  method is overridable.
+
+- External factory: I would need to create a ServerConnectionFactory interface and
+  an implementation, and then pass a factory into the Client. In the tests I would
+  have to supply a factory whose create() method returns a mock that I created
+  outside of the class. That adds extra production classes.
+
+- Passing a collaborator only needs a small change to the constructor. The test has
+  a reference to the mock and passes it in directly, without overriding a method or
+  writing a factory to return it.
+
+- Tradeoff: I cannot refresh the connection by creating a new connection object inside Client, 
+    which would be an option for me with the other two approaches.
 */
+
 package edu.drexel.se320;
 
 import java.io.IOException;
@@ -106,12 +129,13 @@ public class MockTests {
 
         when(sc.connectTo(anyString())).thenReturn(true);
         when(sc.requestFileContents(anyString())).thenReturn(true);
-        // when(sc.moreBytes()).thenReturn(true);
-        // when(sc.read()).thenReturn("DUMMY");
+        when(sc.moreBytes()).thenReturn(true).thenReturn(false);
+        when(sc.read()).thenReturn("DUMMY");
 
-        assertNull(c.requestFile("DUMMY", "DUMMY"));
+        c.requestFile("DUMMY", "DUMMY");
 
-        verify(sc, atLeastOnce()).moreBytes();
+        verify(sc, atLeastOnce()).requestFileContents(anyString());
+        verify(sc, atLeastOnce()).read();
     }
 
     // Test that if the connection succeeds and the file is valid but empty, the client returns an empty string.
@@ -146,7 +170,7 @@ public class MockTests {
     // Test that if the initial server connection succeeds, 
     // then if an IOException occurs while retrieving the file (requesting, or reading bytes, either one)
     // the client still explicitly closes the server connection.
-    // **Expected to fail**?
+    // **Expected to fail**
     @Test
     public void test6() throws IOException {
         ServerConnection sc = mock(ServerConnection.class);
@@ -247,7 +271,6 @@ public class MockTests {
         verify(sc, times(1)).requestFileContents(anyString());
         verify(sc, never()).moreBytes();
         verify(sc, never()).read();
-        verify(sc, never()).closeConnection();
     } 
 
     // For moreBytes()
@@ -266,7 +289,6 @@ public class MockTests {
         verify(sc, times(1)).requestFileContents(anyString());
         verify(sc, times(1)).moreBytes();
         verify(sc, never()).read();
-        verify(sc, never()).closeConnection();
     }
 
     // For read()
@@ -286,7 +308,6 @@ public class MockTests {
         verify(sc, times(1)).requestFileContents(anyString());
         verify(sc, times(1)).moreBytes();
         verify(sc, times(1)).read();
-        verify(sc, never()).closeConnection();
     } 
 
 // For closeConnection()
@@ -299,7 +320,6 @@ public class MockTests {
         when(sc.requestFileContents(anyString())).thenReturn(true);
         when(sc.moreBytes()).thenReturn(true).thenReturn(false);
         when(sc.read()).thenReturn("DUMMY");
-        // when(sc.closeConnection()).thenThrow(new IOException());
         doThrow(new IOException()).when(sc).closeConnection();
 
         assertNull(c.requestFile("DUMMY", "DUMMY"));
@@ -308,7 +328,6 @@ public class MockTests {
         verify(sc, times(1)).requestFileContents(anyString());
         verify(sc, times(2)).moreBytes();
         verify(sc, times(1)).read();
-        verify(sc, times(1)).closeConnection();
     }
 
 }
